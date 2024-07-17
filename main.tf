@@ -1,28 +1,9 @@
-resource "aws_instance" "ec2" {
-    ami = var.ami
+resource "aws_instance" "dev" {
+    ami = var.ami_id
     instance_type = var.instance_type
     key_name = var.key_name
-  
-}
-
-variable "ami" {
-    description = "hhh"
-    type = string
-    default = "ami-056f95ba99f81dbab"
-
-  
-}
-
-variable "instance_type" {
-    description = "hhh"
-    type = string
-    default = "t3.micro"
-  
-}
-
-variable "key_name" {
-    description = "hhh"
-    type = string
-    default = "publickey"
-  
+    associate_public_ip_address = true
+    tags = {
+      Name = "dev_ec2"
+    }
 }
